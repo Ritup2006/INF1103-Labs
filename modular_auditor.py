@@ -22,6 +22,10 @@ def process_delivery(current_total, new_value):
 
     return new_total
 
+def calculate_tax(amount):
+    return amount*0.10
+
+
 
 
 
@@ -71,7 +75,6 @@ def process_delivery(current_total, new_value):
 
 
 if __name__ == "__main__":
-    print(process_delivery(0, 50))      # expect 50
-    print(process_delivery(50, 100))    # expect 150
-    print(process_delivery(200, 0))     # expect 200 (edge case: zero delivery)
+    print(calculate_tax(100))
+
 
