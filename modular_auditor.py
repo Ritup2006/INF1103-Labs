@@ -25,6 +25,12 @@ def process_delivery(current_total, new_value):
 def calculate_tax(amount):
     return amount*0.10
 
+def generate_report(total_units, failed_attempts, deliveries_processed):
+    print("Total Units:", total_units) 
+    print("Total Deliveries Processed:", deliveries_processed) 
+    print("Number of Failed/Rejected Entries:", failed_attempts)
+
+
 
 
 
@@ -74,7 +80,7 @@ def calculate_tax(amount):
 # print("Number of Failed inventory: ", failed_inventory)
 
 
-if __name__ == "__main__":
-    print(calculate_tax(100))
+# if __name__ == "__main__":
+#     print(calculate_tax(100))
 
 
