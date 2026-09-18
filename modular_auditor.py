@@ -61,65 +61,9 @@ def main():
     generate_report(total_units, failed_entries, deliveries_processed)
 
 
-
+if __name__ == "__main__":
+    main()
 
 
 
         
-
-    # while True:
-    #     user_input = get_valid_input()
-
-    #     if user_input == "quit":
-    #         break
-
-    #     if user_input is None:
-    #         failed_entries += 1
-    #         continue
-
-    #     total_units = process_delivery(total_units, user_input)
-    #     deliveries_processed += 1
-
-    #     if total_units > 500:
-    #         print("ALERT: Storage capacity exceeded (> 500 units)! Stopping audit.")
-    #         break
-
-    # generate_report(total_units, failed_entries, deliveries_processed)
-# inventory = 0
-# failed_inventory = 0 
-
-# while True: 
-#     stock_quantity = input("Enter Stock Quantity (Type 'quit' to quit): ")
-    
-#     if stock_quantity.lower() == "quit": 
-#         print("Total Units:", inventory)
-#         break
-        
-  
-#     if not stock_quantity.isdigit():
-#         print("This number is rejected.")
-#         failed_inventory += 1
-#         continue
-        
-#     stock_actual = int(stock_quantity)
-    
-
-#     if stock_actual < 0:
-#         print("Negative number rejected")
-#         failed_inventory += 1
-#         continue
-
-#     inventory += stock_actual
-
-#     if inventory > 500:
-#         print("Alert, overloaded")
-#         inventory -= stock_actual
-#         break
-
-# print("Total Units: ", inventory)
-# print("Number of Failed inventory: ", failed_inventory)
-
-
-# if __name__ == "__main__":
-#     print(calculate_tax(100))
-
