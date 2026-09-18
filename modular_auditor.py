@@ -58,7 +58,7 @@ def main():
             print("ALERT: Storage capacity exceeded (> 500 units)!")
             break
 
-    # generate_report(total_units, failed_entries, deliveries_processed)
+    generate_report(total_units, failed_entries, deliveries_processed)
 
 
 
