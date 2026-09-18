@@ -48,6 +48,23 @@ def main():
             failed_entries += 1
             continue
 
+        total_units = process_delivery(total_units, user_input)
+        deliveries_processed += 1
+        total_tax = calculate_tax(total_units)
+
+        print("total tax: ", total_tax)
+
+    #     if total_units > 500:
+    #         print("ALERT: Storage capacity exceeded (> 500 units)!")
+    #         break
+
+    # generate_report(total_units, failed_entries, deliveries_processed)
+
+
+
+
+
+
         
 
     # while True:
