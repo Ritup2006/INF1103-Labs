@@ -33,18 +33,41 @@ def generate_report(total_units, failed_attempts, deliveries_processed):
 
 
 
+def main():
+    total_units = 0
+    failed_entries = 0
+    deliveries_processed = 0
 
+    while True:
+        user_input= get_valid_input()
 
+        if user_input == "quit":
+            break
 
+        if user_input is None:
+            failed_entries += 1
+            continue
 
+        
 
+    # while True:
+    #     user_input = get_valid_input()
 
+    #     if user_input == "quit":
+    #         break
 
+    #     if user_input is None:
+    #         failed_entries += 1
+    #         continue
 
+    #     total_units = process_delivery(total_units, user_input)
+    #     deliveries_processed += 1
 
+    #     if total_units > 500:
+    #         print("ALERT: Storage capacity exceeded (> 500 units)! Stopping audit.")
+    #         break
 
-
-
+    # generate_report(total_units, failed_entries, deliveries_processed)
 # inventory = 0
 # failed_inventory = 0 
 
@@ -82,5 +105,4 @@ def generate_report(total_units, failed_attempts, deliveries_processed):
 
 # if __name__ == "__main__":
 #     print(calculate_tax(100))
-
 
