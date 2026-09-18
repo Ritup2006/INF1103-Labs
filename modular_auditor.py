@@ -54,9 +54,9 @@ def main():
 
         print("total tax: ", total_tax)
 
-    #     if total_units > 500:
-    #         print("ALERT: Storage capacity exceeded (> 500 units)!")
-    #         break
+        if total_units > 500:
+            print("ALERT: Storage capacity exceeded (> 500 units)!")
+            break
 
     # generate_report(total_units, failed_entries, deliveries_processed)
 
