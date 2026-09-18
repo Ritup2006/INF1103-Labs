@@ -39,7 +39,7 @@ def main():
     deliveries_processed = 0
 
     while True:
-        user_input= get_valid_input()
+        user_input = get_valid_input()
 
         if user_input == "quit":
             break
@@ -50,12 +50,14 @@ def main():
 
         total_units = process_delivery(total_units, user_input)
         deliveries_processed += 1
-        total_tax = calculate_tax(total_units)
+        total_tax = calculate_tax(user_input)
 
         print("total tax: ", total_tax)
 
         if total_units > 500:
             print("ALERT: Storage capacity exceeded (> 500 units)!")
+            total_units -= user_input
+            deliveries_processed -= 1
             break
 
     generate_report(total_units, failed_entries, deliveries_processed)
