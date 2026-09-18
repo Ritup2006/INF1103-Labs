@@ -9,7 +9,7 @@ def get_valid_input():
         return None
 
     stock_actual = int(stock_quantity)
-    
+
     if stock_actual < 0:
         print("Negative number rejected")
         return None
@@ -17,10 +17,10 @@ def get_valid_input():
     return stock_actual
 
 
-# def process_delivery(current_total, new_value):
-#     new_total= current_total + new_value
+def process_delivery(current_total, new_value):
+    new_total= current_total + new_value
 
-#     return new_total
+    return new_total
 
 
 
@@ -69,6 +69,9 @@ def get_valid_input():
 # print("Total Units: ", inventory)
 # print("Number of Failed inventory: ", failed_inventory)
 
+
 if __name__ == "__main__":
-    result = get_valid_input()
-    print("Result:", result)
+    print(process_delivery(0, 50))      # expect 50
+    print(process_delivery(50, 100))    # expect 150
+    print(process_delivery(200, 0))     # expect 200 (edge case: zero delivery)
+
