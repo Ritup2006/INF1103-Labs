@@ -59,6 +59,7 @@ def main():
         user_input = get_valid_input()
 
         if user_input == "quit":
+            
             break
 
         if user_input is None:
@@ -66,6 +67,7 @@ def main():
             continue
 
         total_units = process_delivery(total_units, user_input)
+        history.append(user_input)
         deliveries_processed += 1
 
         total_tax = calculate_tax(user_input)
