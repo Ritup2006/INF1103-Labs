@@ -48,6 +48,10 @@ def load_inventory():
         return 0, []
 
 
+def save_inventory(total_units, history):
+    with open("inventory.txt", "w") as file:
+        file.write(str(total_units) + "\n")
+        file.write(str(history) + "\n")
 
 
 def main():
@@ -59,7 +63,7 @@ def main():
         user_input = get_valid_input()
 
         if user_input == "quit":
-            
+            save_inventory(total_units, history)
             break
 
         if user_input is None:
