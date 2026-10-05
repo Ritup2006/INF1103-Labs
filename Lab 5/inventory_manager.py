@@ -31,7 +31,34 @@ def add_product(inventory):
     print("Product added successfully!")
     
 
+def update_stock(inventory):
+    product_id = input("Enter Product ID: ")
 
+    for product in inventory:
+        if product["id"] == product_id:
+            print(f"Name: {product['name']}")
+            print(f"Current Stock: {product['stock']}")
+
+            new_stock = int(input("New Stock Quantity: "))
+            product["stock"] = new_stock
+
+            print("Stock updated successfully!")
+            return
+
+    print("Product not found.")
+
+def search_product(inventory):
+    product_id = input("Enter Product ID: ")
+
+    for product in inventory:
+        if product["id"] == product_id:
+            print(f"ID: {product['id']}")
+            print(f"Name: {product['name']}")
+            print(f"Price: ${product['price']:.2f}")
+            print(f"Stock: {product['stock']}")
+            return
+
+    print("Product not found.")
 
 
 
@@ -92,8 +119,11 @@ def save_inventory(total_units, history):
 
 
 def main():
-    add_product(inventory)
     display_all(inventory)
+    display_all(inventory)
+    display_all(inventory)
+    search_product(inventory)
+
 
 
 if __name__ == "__main__":
