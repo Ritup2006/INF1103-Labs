@@ -59,40 +59,6 @@ def search_product(inventory):
 
 
 
-def get_valid_input():
-    stock_quantity = input("Enter Stock Quantity (Type 'quit' to quit): ")
-
-    if stock_quantity.lower() == "quit": 
-        return "quit"
-
-    if not stock_quantity.isdigit():
-        print("This number is rejected.")
-        return None
-
-    stock_actual = int(stock_quantity)
-
-    if stock_actual < 0:
-        print("Negative number rejected")
-        return None
-    
-    return stock_actual
-
-
-def process_delivery(current_total, new_value):
-    new_total = current_total + new_value
-
-    return new_total
-
-
-def calculate_tax(amount):
-    return amount * 0.10
-
-
-def generate_report(total_units, history, failed_attempts, deliveries_processed):
-    print("Total Units:", total_units)
-    print("Transaction History:", history)
-    print("Total Deliveries Processed:", deliveries_processed)
-    print("Number of Failed/Rejected Entries:", failed_attempts)
 
 
 def load_inventory():
