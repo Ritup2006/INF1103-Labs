@@ -14,6 +14,26 @@ def display_all(inventory):
             f"Price: ${product['price']:.2f} | "
             f"Stock: {product['stock']}")
 
+def add_product(inventory):
+    product_id = input("Product ID: ")
+    name = input("Product Name: ")
+    price = float(input("Price: "))
+    stock = int(input("Stock Quantity: "))
+
+    product = {
+        "id": product_id,
+        "name": name,
+        "price": price,
+        "stock": stock
+    }
+
+    inventory.append(product)
+    print("Product added successfully!")
+    
+
+
+
+
 
 def get_valid_input():
     stock_quantity = input("Enter Stock Quantity (Type 'quit' to quit): ")
@@ -72,37 +92,8 @@ def save_inventory(total_units, history):
 
 
 def main():
-    total_units, history = load_inventory()
-    failed_entries = 0
-    deliveries_processed = 0
-
-    while True:
-        user_input = get_valid_input()
-
-        if user_input == "quit":
-            save_inventory(total_units, history)
-            break
-
-        if user_input is None:
-            failed_entries += 1
-            continue
-
-        total_units = process_delivery(total_units, user_input)
-        history.append(user_input)
-        deliveries_processed += 1
-
-        total_tax = calculate_tax(user_input)
-
-        print("total tax: ", total_tax)
-
-        if total_units > 500:
-            print("ALERT: Storage capacity exceeded (> 500 units)!")
-            total_units -= user_input
-            history.pop()
-            deliveries_processed -= 1
-            break
-
-    generate_report(total_units, history, failed_entries, deliveries_processed)
+    add_product(inventory)
+    display_all(inventory)
 
 
 if __name__ == "__main__":
