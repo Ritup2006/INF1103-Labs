@@ -1,8 +1,5 @@
-inventory = [
-    {"id": "P001", "name": "Laptop", "price": 1200.00, "stock": 15},
-    {"id": "P002", "name": "Mouse", "price": 25.50, "stock": 40},
-    {"id": "P003", "name": "Keyboard", "price": 45.00, "stock": 25}
-]
+
+import json
 
 def display_all(inventory):
     print("\nCurrent Inventory")
@@ -100,16 +97,15 @@ def generate_report(total_units, history, failed_attempts, deliveries_processed)
 
 def load_inventory():
     try:
-        with open("inventory.txt", "r") as file:
-            lines = file.readlines()
+        with open("inventory.json", "r") as file:
+            inventory = json.load(file)
 
-            total_units = int(lines[0])
-            history = eval(lines[1])
-
-            return total_units, history
+        print("Inventory loaded successfully.")
+        return inventory
 
     except FileNotFoundError:
-        return 0, []
+        print("No inventory file found. Starting with an empty inventory.")
+        return []
 
 
 def save_inventory(total_units, history):
@@ -119,10 +115,8 @@ def save_inventory(total_units, history):
 
 
 def main():
+    inventory = load_inventory()
     display_all(inventory)
-    display_all(inventory)
-    display_all(inventory)
-    search_product(inventory)
 
 
 
