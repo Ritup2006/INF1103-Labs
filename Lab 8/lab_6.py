@@ -16,8 +16,28 @@ class Product:
         print(self.__name)
         print(self.__price)
         print(self.__stock)
+
+    def get_product_id(self):
+        return self.__product_id
         
 
+
+class Inventory:
+    def __init__(self):
+        self.products = []
+
+    def add_product(self, product):
+        self.products.append(product)
+
+    def search_product(self, product_id):
+        for product in self.products:
+            if product.get_product_id() == product_id:
+                return product
+        return None
+
+    def display_all(self):
+        for product in self.products:
+            product.display_information()
 
 
 
