@@ -2,12 +2,16 @@ class Inventory:
     def __init__(self):
         self.products = []
 
-    def add_product(self, product):
+
+    def add_product(self, product, show_message=True):
         if self.search_product(product.get_product_id()) is not None:
-            print("Product ID already exists!")
+            if show_message:
+                print("Product ID already exists!")
         else:
             self.products.append(product)
-            print("Product added successfully!")
+            if show_message:
+                print("Product added successfully!")
+
 
     def search_product(self, product_id):
         for product in self.products:

@@ -17,7 +17,7 @@ def load_inventory():
                 float(item["price"]),
                 int(item["stock"])
             )
-            inventory.add_product(product)
+            inventory.add_product(product, show_message=False)
 
     except FileNotFoundError:
         pass
