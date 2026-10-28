@@ -37,7 +37,11 @@ class Inventory:
         self.products = []
 
     def add_product(self, product):
-        self.products.append(product)
+        if self.search_product(product.get_product_id()) is not None:
+            print("Product ID already exists!")
+        else:
+            self.products.append(product)
+            print("Product added successfully!")
 
     def search_product(self, product_id):
         for product in self.products:
@@ -107,24 +111,54 @@ def main():
         elif choice == "2":
             product_id = input("Product ID: ")
             name = input("Product Name: ")
-            price = float(input("Product Price: "))
-            stock = int(input("Product Stock: "))
+
+            while True:
+                try:
+                    price = float(input("Product Price: "))
+
+                    if price < 0:
+                        print("Price cannot be negative!")
+                    else:
+                        break
+
+                except ValueError:
+                    print("Invalid price! Please enter a number.")
+
+            while True:
+                try:
+                    stock = int(input("Product Stock: "))
+
+                    if stock < 0:
+                        print("Stock cannot be negative!")
+                    else:
+                        break
+
+                except ValueError:
+                    print("Invalid stock! Please enter a whole number.")
 
             product = Product(product_id, name, price, stock)
             inventory.add_product(product)
 
-            print("Product added successfully!")
-
-
         elif choice == "3":
             product_id = input("Enter Product ID: ")
-            quantity = int(input("Enter new stock quantity: "))
-
             product = inventory.search_product(product_id)
 
             if product is not None:
+                while True:
+                    try:
+                        quantity = int(input("Enter new stock quantity: "))
+
+                        if quantity < 0:
+                            print("Stock cannot be negative!")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("Invalid stock! Please enter a whole number.")
+
                 product.update_stock(quantity)
                 print("Stock updated successfully!")
+
             else:
                 print("Product not found!")
 
@@ -147,7 +181,7 @@ def main():
             break
 
         else:
-            print("Invalid option. Please enter 1 to 6.")
+            print("Invalid Option. Please enter 1 to 6.")
 
 
 
