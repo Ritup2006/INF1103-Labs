@@ -19,7 +19,7 @@ class Product:
             f"Stock: {self.__stock}"
         )
 
-        def get_product_id(self):
+    def get_product_id(self):
             return self.__product_id
 
     def to_dict(self):
