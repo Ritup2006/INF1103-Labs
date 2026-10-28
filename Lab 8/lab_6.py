@@ -12,13 +12,15 @@ class Product:
         self.__stock = quantity
 
     def display_information(self):
-        print(self.__product_id)
-        print(self.__name)
-        print(self.__price)
-        print(self.__stock)
+        print(
+            f"ID: {self.__product_id} | "
+            f"Name: {self.__name} | "
+            f"Price: ${self.__price:.2f} | "
+            f"Stock: {self.__stock}"
+        )
 
-    def get_product_id(self):
-        return self.__product_id
+        def get_product_id(self):
+            return self.__product_id
 
     def to_dict(self):
         return {
@@ -44,6 +46,7 @@ class Inventory:
         return None
 
     def display_all(self):
+        print("\nCurrent Inventory")
         for product in self.products:
             product.display_information()
 
@@ -85,7 +88,7 @@ def save_inventory(inventory):
     print("Inventory saved successfully!")
 
 def main():
-    inventory = Inventory()
+    inventory = load_inventory()
 
     while True:
         print("\n----------- MENU -----------")
