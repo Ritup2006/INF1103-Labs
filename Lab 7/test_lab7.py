@@ -22,3 +22,6 @@ heavy = PhysicalProduct("P003", "Amplifier", 350.00, 3, 12.0)
 
 print("Book shipping:", light.calculate_shipping_cost())
 print("Amplifier shipping:", heavy.calculate_shipping_cost())
+
+print(guitar.to_dict())
+print(game.to_dict())
