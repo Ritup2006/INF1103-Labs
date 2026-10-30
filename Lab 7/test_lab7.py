@@ -16,3 +16,9 @@ try:
     item = Product("X001", "Thing", 1.0, 1)
 except TypeError as e:
     print("Blocked as expected:", e)
+
+light = PhysicalProduct("P002", "Book", 15.00, 20, 0.5)
+heavy = PhysicalProduct("P003", "Amplifier", 350.00, 3, 12.0)
+
+print("Book shipping:", light.calculate_shipping_cost())
+print("Amplifier shipping:", heavy.calculate_shipping_cost())
