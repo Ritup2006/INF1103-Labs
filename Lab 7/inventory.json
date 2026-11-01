@@ -14,5 +14,21 @@
         "stock": 30,
         "type": "digital",
         "download_size": 850.0
+    },
+    {
+        "id": "002",
+        "name": "Tv",
+        "price": 200.0,
+        "stock": 10,
+        "type": "physical",
+        "weight": 30.0
+    },
+    {
+        "id": "102",
+        "name": "Game1",
+        "price": 30.0,
+        "stock": 20,
+        "type": "digital",
+        "download_size": 300.0
     }
 ]
