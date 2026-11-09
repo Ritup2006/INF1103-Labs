@@ -1,6 +1,8 @@
 import json
-from product import Product
+from physical_product import PhysicalProduct
+from digital_product import DigitalProduct
 from inventory import Inventory
+from supplier import Supplier
 
 
 def load_inventory():
@@ -11,19 +13,46 @@ def load_inventory():
             data = json.load(file)
 
         for item in data:
-            product = Product(
-                item["id"],
-                item["name"],
-                float(item["price"]),
-                int(item["stock"])
-            )
-            inventory.add_product(product, show_message=False)
+            product_type = item.get("type")
 
+            supplier_data = item.get("supplier")
+
+            if supplier_data is not None:
+                supplier = Supplier(
+                    supplier_data["supplier_id"],
+                    supplier_data["name"],
+                    supplier_data["contact_email"]
+                )
+            else:
+                supplier = None
+
+            if product_type == "physical":
+                product = PhysicalProduct(
+                                    item["id"],
+                                    item["name"],
+                                    float(item["price"]),
+                                    int(item["stock"]),
+                                    float(item["weight"]),
+                                    supplier)
+                                
+            elif product_type == "digital":
+                product = DigitalProduct(
+                    item["id"],
+                    item["name"],
+                    float(item["price"]),
+                    int(item["stock"]),
+                    float(item["download_size"]),
+                    supplier
+                )
+            else:
+                print(f"Skipping unknown product type: {product_type}")
+                continue
+
+            inventory.add_product(product, show_message=False)
     except FileNotFoundError:
         pass
 
     return inventory
-
 
 def save_inventory(inventory):
     data = []
@@ -57,6 +86,16 @@ def main():
             product_id = input("Product ID: ")
             name = input("Product Name: ")
 
+            supplier_id = input("Supplier ID: ")
+            supplier_name = input("Supplier Name: ")
+            supplier_email = input("Supplier Email: ")
+
+            supplier = Supplier(
+                supplier_id,
+                supplier_name,
+                supplier_email
+            )
+
             while True:
                 try:
                     price = float(input("Product Price: "))
@@ -81,8 +120,51 @@ def main():
                 except ValueError:
                     print("Invalid stock! Please enter a whole number.")
 
-            product = Product(product_id, name, price, stock)
+            while True:
+                print("Product type:")
+                print("1. Physical")
+                print("2. Digital")
+
+                type_choice = input("Choose type (1 or 2): ")
+
+                if type_choice in ("1", "2"):
+                    break
+                print("Invalid choice! Please enter 1 or 2.")
+
+            if type_choice == "1":
+                while True:
+                    try:
+                        weight = float(input("Weight (kg): "))
+
+                        if weight < 0:
+                            print("Weight cannot be negative!")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("Invalid weight! Please enter a number.")
+
+                product = PhysicalProduct(product_id, name, price, stock, weight, supplier)
+
+
+            else:
+                while True:
+                    try:
+                        download_size = float(input("Download size (MB): "))
+
+                        if download_size < 0:
+                            print("Download size cannot be negative!")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("Invalid size! Please enter a number.")
+
+                product = DigitalProduct(product_id, name, price, stock, download_size, supplier)
+
             inventory.add_product(product)
+                
+
 
         elif choice == "3":
             product_id = input("Enter Product ID: ")

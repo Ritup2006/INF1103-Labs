@@ -29,7 +29,12 @@ class Product(ABC):
             "id": self.__product_id,
             "name": self.__name,
             "price": self.__price,
-            "stock": self.__stock
+            "stock": self.__stock,
+            "supplier": {
+                "supplier_id": self.supplier.supplier_id,
+                "name": self.supplier.name,
+                "contact_email": self.supplier.contact_email
+            } if self.supplier is not None else None
         }
     @abstractmethod
     def get_fulfilment_info(self) -> str:
@@ -40,3 +45,6 @@ class Product(ABC):
 
     def get_name(self) -> str:
          return self.__name
+
+    def get_stock(self) -> int:
+        return self.__stock
