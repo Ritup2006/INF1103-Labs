@@ -5,7 +5,7 @@ class Inventory:
         self.products : list[Product] = []
 
 
-    def add_product(self, product, show_message=True):
+    def add_product(self, product: Product, show_message: bool =True):
         if self.search_product(product.get_product_id()) is not None:
             if show_message:
                 print("Product ID already exists!")
@@ -21,12 +21,15 @@ class Inventory:
                 return product
         return None
 
+    def find_product(self, product_id: str) -> Product | None:
+     return self.search_product(product_id)
+
     def display_all(self):
         print("\nCurrent Inventory")
         for product in self.products:
             product.display_information()
 
-    def remove_product(self, product_id):
+    def remove_product(self, product_id: str) -> None:
         product = self.search_product(product_id)
 
         if product is not None:

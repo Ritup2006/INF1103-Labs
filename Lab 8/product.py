@@ -10,7 +10,7 @@ class Product(ABC):
         self.__stock = stock
         self.supplier: Supplier = supplier
 
-    def update_stock(self, quantity: int):
+    def update_stock(self, quantity: int) -> None:
         self.__stock = quantity
 
     def display_information(self):
@@ -21,10 +21,10 @@ class Product(ABC):
             f"Stock: {self.__stock}"
         )
 
-    def get_product_id(self):
+    def get_product_id(self) -> str:
             return self.__product_id
 
-    def to_dict(self):
+    def to_dict(self) -> dict:
         return {
             "id": self.__product_id,
             "name": self.__name,
@@ -32,7 +32,7 @@ class Product(ABC):
             "stock": self.__stock
         }
     @abstractmethod
-    def get_fulfilment_info(self):
+    def get_fulfilment_info(self) -> str:
         pass
 
     def get_price(self) -> float:
