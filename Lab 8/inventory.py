@@ -1,6 +1,8 @@
+from product import Product
+
 class Inventory:
     def __init__(self):
-        self.products = []
+        self.products : list[Product] = []
 
 
     def add_product(self, product, show_message=True):
@@ -23,3 +25,12 @@ class Inventory:
         print("\nCurrent Inventory")
         for product in self.products:
             product.display_information()
+
+    def remove_product(self, product_id):
+        product = self.search_product(product_id)
+
+        if product is not None:
+            self.products.remove(product)
+            print("Product removed successfully!")
+        else:
+            print("Product not found!")
