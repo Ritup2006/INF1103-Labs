@@ -18,7 +18,9 @@ class Product(ABC):
             f"ID: {self.__product_id} | "
             f"Name: {self.__name} | "
             f"Price: ${self.__price:.2f} | "
-            f"Stock: {self.__stock}"
+            f"Stock: {self.__stock}" 
+            f" | Supplier: {self.supplier.name if self.supplier else 'N/A'}"
+            
         )
 
     def get_product_id(self) -> str:

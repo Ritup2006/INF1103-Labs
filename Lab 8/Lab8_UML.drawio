@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram name="Lab 8 UML" id="lab8">
+    <mxGraphModel dx="838" dy="414" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="supplier" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontSize=13;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;Supplier&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;+ supplier_id&lt;br&gt;+ name&lt;br&gt;+ contact_email&lt;hr&gt;+ display_information(): None" vertex="1">
+          <mxGeometry height="176" width="300" x="50" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;Inventory&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;+ products: list[Product]&lt;hr&gt;+ add_product(product: Product, show_message: bool = True)&lt;br&gt;+ search_product(product_id)&lt;br&gt;+ find_product(product_id: str): Product | None&lt;br&gt;+ remove_product(product_id: str): None&lt;br&gt;+ display_all()" vertex="1">
+          <mxGeometry height="224" width="350" x="50" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="product" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;«abstract» Product&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- product_id: str&lt;br&gt;- name: str&lt;br&gt;- price: float&lt;br&gt;- stock: int&lt;br&gt;+ supplier: Supplier&lt;hr&gt;+ update_stock(quantity: int): None&lt;br&gt;+ display_information()&lt;br&gt;+ get_product_id(): str&lt;br&gt;+ get_price(): float&lt;br&gt;+ get_name(): str&lt;br&gt;+ get_stock(): int&lt;br&gt;+ to_dict(): dict&lt;br&gt;+ get_fulfilment_info(): str {abstract}" vertex="1">
+          <mxGeometry height="392" width="390" x="610" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="physical" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;PhysicalProduct&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- weight: float&lt;hr&gt;+ display_information(): None&lt;br&gt;+ get_fulfilment_info(): str&lt;br&gt;+ calculate_shipping_cost(): float&lt;br&gt;+ to_dict(): dict" vertex="1">
+          <mxGeometry height="200" width="335" x="450" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="digital" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;DigitalProduct&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;- download_size: float&lt;hr&gt;+ display_information()&lt;br&gt;+ get_fulfilment_info()&lt;br&gt;+ to_dict(): dict" vertex="1">
+          <mxGeometry height="176" width="335" x="870" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="shipped" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;«abstract» CanBeShipped&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;&lt;hr&gt;+ calculate_shipping_cost(): float {abstract}" vertex="1">
+          <mxGeometry height="104" width="335" x="450" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="order" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;Order&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;+ order_id: str&lt;br&gt;+ order_lines: list[OrderLine]&lt;hr&gt;+ add_order_line(product: Product, quantity: int): None&lt;br&gt;+ calculate_total(): float&lt;br&gt;+ display_order(): None&lt;br&gt;+ remove_order_line(index: int): None" vertex="1">
+          <mxGeometry height="224" width="415" x="1320" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="line" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" value="&lt;div style=&quot;font-size:16px;text-align:center&quot;&gt;&lt;b&gt;OrderLine&lt;/b&gt;&lt;/div&gt;&lt;hr&gt;+ product: Product&lt;br&gt;+ quantity&lt;hr&gt;+ calculate_subtotal(): float" vertex="1">
+          <mxGeometry height="152" width="340" x="1330" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="supplier_product" edge="1" parent="1" source="supplier" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#3f536a;startArrow=none;endArrow=none;fontSize=12;labelBackgroundColor=#ffffff;" target="product" value="supplies  (Supplier 1 — Product 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inventory_product" edge="1" parent="1" source="inventory" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#3f536a;startArrow=diamond;startFill=0;startSize=18;endArrow=none;fontSize=12;labelBackgroundColor=#ffffff;" target="product" value="contains  (Inventory 0..1 — Product 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="physical_product" edge="1" parent="1" source="physical" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#3f536a;endArrow=block;endFill=0;endSize=16;fontSize=12;labelBackgroundColor=#ffffff;" target="product" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="digital_product" edge="1" parent="1" source="digital" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#3f536a;endArrow=block;endFill=0;endSize=16;fontSize=12;labelBackgroundColor=#ffffff;" target="product" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="physical_shipped" edge="1" parent="1" source="physical" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#3f536a;dashed=1;endArrow=block;endFill=0;endSize=16;fontSize=12;labelBackgroundColor=#ffffff;" target="shipped" value="implements">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="order_line" edge="1" parent="1" source="order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#3f536a;startArrow=diamond;startFill=1;startSize=18;endArrow=none;fontSize=12;labelBackgroundColor=#ffffff;" target="line" value="contains  (Order 1 — OrderLine 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="line_product" edge="1" parent="1" source="line" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#3f536a;startArrow=none;endArrow=none;fontSize=12;labelBackgroundColor=#ffffff;" target="product" value="uses (OrderLine 0..* — Product 1)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
