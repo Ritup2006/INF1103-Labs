@@ -158,9 +158,14 @@ def main():
                     except ValueError:
                         print("Invalid size! Please enter a number.")
 
-                product = DigitalProduct(
-                    product_id, name, price, stock,
-                    download_size, supplier
+                product = ProductFactory.create(
+                    "digital",
+                    product_id,
+                    name,
+                    price,
+                    stock,
+                    download_size,
+                    supplier
                 )
 
             inventory.add_product(product)
